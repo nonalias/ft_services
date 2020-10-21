@@ -8,10 +8,10 @@ RUN apk add openssl
 
 COPY ./nginx.sh /tmp/nginx.sh
 # COPY ./nginx.conf /etc/nginx/nginx.conf
-# COPY ./default.conf /etc/nginx/conf.d/default.conf
-COPY ./default_80.conf /etc/nginx/conf.d/default.conf
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+# COPY ./default_80.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80 443
+# EXPOSE 443
 
 ENTRYPOINT ["sh","/tmp/nginx.sh"]

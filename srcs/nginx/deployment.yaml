@@ -1,7 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deploy
+  name: nginx-deployment
+  labels:
+    type: app
+    service: nginx
 spec:
   replicas: 2
   selector:
@@ -15,27 +18,43 @@ spec:
           service: nginx
     spec:
       containers:
-      - name: nginx
+      - name: nginx-container
         image: nginx-image
         imagePullPolicy: Never
         livenessProbe:
-            httpGet:
-                path: /
-                port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            tcpSocket:
+                port: 22
         ports:
-        - containerPort: 80
+            - containerPort: 80 
+              name: http
+              protocol: TCP
+            - containerPort: 443
+              name: https
+              protocol: TCP
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: nginx-service
+  labels:
+    type: app
+    service: nginx
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-  - port: 80
-    protocol: TCP
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 443
   selector:
       type: app
       service: nginx
