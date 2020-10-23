@@ -6,7 +6,10 @@ eval $(minikube docker-env)
 
 # metallb operation
 cd ./srcs/metallb/
+kubectl apply -f namespace.yaml
 kubectl apply -f metallb.yaml
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+kubectl apply -f config.yaml
 cd ../..
 
 # Nginx operation
