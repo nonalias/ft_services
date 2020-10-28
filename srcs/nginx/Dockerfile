@@ -5,6 +5,7 @@ RUN apk add vim
 RUN apk add nginx
 RUN apk add openrc
 RUN apk add openssl
+RUN apk add openssh
 
 COPY ./nginx.sh /tmp/nginx.sh
 # COPY ./nginx.conf /etc/nginx/nginx.conf

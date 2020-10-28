@@ -5,3 +5,7 @@ cd ../../
 cd srcs/metallb/
 kubectl delete -f *.yaml
 cd ../..
+
+cd srcs/mysql/
+kubectl delete -f *.yaml
+cd ../..

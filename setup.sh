@@ -17,3 +17,9 @@ cd ./srcs/nginx/
 docker build -t nginx-image .
 kubectl apply -f *.yaml
 cd ../..
+
+# MySQL operation
+#cd ./srcs/mysql/
+#docker build -t mysql-image .
+#kubectl apply -f *.yaml
+#cd ../..
