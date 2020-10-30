@@ -23,3 +23,5 @@ cd ../..
 #docker build -t mysql-image .
 #kubectl apply -f *.yaml
 #cd ../..
+
+ssh-keygen -R 192.168.99.240

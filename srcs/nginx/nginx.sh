@@ -3,4 +3,6 @@ mv localhost.dev.crt /
 mv localhost.dev.key /
 chmod 600 /localhost.dev.crt /localhost.dev.key
 
+/usr/sbin/sshd
+
 nginx -g 'pid /tmp/nginx.pid; daemon off;';
