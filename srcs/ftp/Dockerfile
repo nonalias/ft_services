@@ -5,10 +5,13 @@ RUN apk add vim
 RUN apk add vsftpd
 
 COPY ./vsftpd.conf /etc/vsftpd/
+COPY ./ftp.sh /tmp/ftp.sh
 
-#RUN	adduser hoon --disabled-password && \
-#echo hoon:hoon | chpasswd 
-RUN echo root:root | chpasswd
+ENV	USER=modyhoon
+ENV	PASSWORD=1q2w3e4r
 
 
-#CMD ["vsftpd"]
+EXPOSE 21
+
+
+CMD ["sh", "/tmp/ftp.sh"]
