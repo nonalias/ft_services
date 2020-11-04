@@ -14,13 +14,19 @@ cd ../..
 
 # Nginx operation
 cd ./srcs/nginx/
-docker build -t nginx-image .
+docker build -t nginx-image . > /dev/null
+kubectl apply -f *.yaml
+cd ../..
+
+# ftps operation
+cd ./srcs/ftp/
+docker build -t ftps-image . > /dev/null
 kubectl apply -f *.yaml
 cd ../..
 
 # MySQL operation
 #cd ./srcs/mysql/
-#docker build -t mysql-image .
+#docker build -t mysql-image . > /dev/null
 #kubectl apply -f *.yaml
 #cd ../..
 
