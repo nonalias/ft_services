@@ -1,17 +1,15 @@
-IMG_NAME	=	my_nginx
-PS_NAME		=	nginx-ps
-PORT1		=	80
-PORT2		=	443
-PORT3		=	22
+IMG_NAME	=	my_ftps
+PS_NAME		=	ftps-ps
+PORT		=	21
+PORT2		=	50000
 
 all	:	build run
 
 run	:
-	docker run --name $(PS_NAME) -d -p $(PORT1):$(PORT1) -p $(PORT2):$(PORT2) $(IMG_NAME)
+	docker run --name $(PS_NAME) -d -p $(PORT):$(PORT) -p $(PORT2):$(PORT2) $(IMG_NAME)
 
-exec:
+exec :
 	docker exec -it $$(docker ps -aq -f "name=$(PS_NAME)") sh
-
 
 build	:
 	docker build -t $(IMG_NAME) .
