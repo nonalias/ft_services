@@ -7,7 +7,7 @@ PORT3		=	22
 all	:	build run
 
 run	:
-	docker run --name $(PS_NAME) -d -p $(PORT1):$(PORT1) -p $(PORT2):$(PORT2) -p $(PORT3):$(PORT3) $(IMG_NAME)
+	docker run --name $(PS_NAME) -d -p $(PORT1):$(PORT1) -p $(PORT2):$(PORT2) $(IMG_NAME)
 
 exec:
 	docker exec -it $$(docker ps -aq -f "name=$(PS_NAME)") sh
