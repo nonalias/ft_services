@@ -25,9 +25,10 @@ kubectl apply -f *.yaml
 cd ../..
 
 # MySQL operation
-#cd ./srcs/mysql/
-#docker build -t mysql-image . > /dev/null
-#kubectl apply -f *.yaml
-#cd ../..
+cd ./srcs/mysql/
+docker build -t mysql-image . > /dev/null
+kubectl apply -f deployment.yaml
+kubectl apply -f pv.yaml
+cd ../..
 
 ssh-keygen -R 192.168.99.240
