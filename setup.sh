@@ -17,27 +17,28 @@ cd ../..
 # Nginx operation
 cd ./srcs/nginx/
 docker build -t nginx-image . > /dev/null
+kubectl create configmap nginxconfigmap --from-file=./default.conf --from-file=./proxy.conf
 kubectl apply -f *.yaml
 cd ../..
 
 # ftps operation
-cd ./srcs/ftp/
-docker build -t ftps-image . > /dev/null
-kubectl apply -f *.yaml
-cd ../..
+#cd ./srcs/ftp/
+#docker build -t ftps-image . > /dev/null
+#kubectl apply -f *.yaml
+#cd ../..
 
 # MySQL operation
-cd ./srcs/mysql/
-docker build -t mysql-image . > /dev/null
-kubectl apply -f deployment.yaml
-kubectl apply -f pv.yaml
-cd ../..
+#cd ./srcs/mysql/
+#docker build -t mysql-image . > /dev/null
+#kubectl apply -f deployment.yaml
+#kubectl apply -f pv.yaml
+#cd ../..
 
 # phpMyAdmin operation
-cd ./srcs/phpmyadmin/
-docker build -t phpmyadmin-image . 
-kubectl apply -f phpmyadmin.yaml
-cd ../..
+#cd ./srcs/phpmyadmin/
+#docker build -t phpmyadmin-image . 
+#kubectl apply -f phpmyadmin.yaml
+#cd ../..
 
 
 ssh-keygen -R 192.168.99.240

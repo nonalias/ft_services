@@ -15,3 +15,7 @@ cd srcs/mysql/
 kubectl delete -f deployment.yaml
 kubectl delete -f pv.yaml
 cd ../..
+
+cd srcs/phpmyadmin/
+kubectl delete -f phpmyadmin.yaml
+cd ../..
