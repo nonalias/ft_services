@@ -1,3 +1,5 @@
+# volume over predict
+export MINIKUBE_HOME=~/goinfre
 # starting minikube
 minikube start --driver=virtualbox
 
