@@ -33,4 +33,11 @@ kubectl apply -f deployment.yaml
 kubectl apply -f pv.yaml
 cd ../..
 
+# phpMyAdmin operation
+cd ./srcs/phpmyadmin/
+docker build -t phpmyadmin-image . 
+kubectl apply -f phpmyadmin.yaml
+cd ../..
+
+
 ssh-keygen -R 192.168.99.240

@@ -24,8 +24,8 @@ RUN apk add nginx \
         php7-pdo_sqlite \
         php7-phar \
         php7-posix \
-        php7-session \
-        php7-soap \
+        php7-session \ 
+		php7-soap \
         php7-xml \
         php7-zip
 
