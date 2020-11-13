@@ -14,12 +14,7 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 kubectl apply -f config.yaml
 cd ../..
 
-# Nginx operation
-cd ./srcs/nginx/
-docker build -t nginx-image . > /dev/null
-kubectl create configmap nginxconfigmap --from-file=./default.conf --from-file=./proxy.conf
-kubectl apply -f *.yaml
-cd ../..
+
 
 # ftps operation
 cd ./srcs/ftp/
@@ -38,6 +33,13 @@ cd ../..
 cd ./srcs/phpmyadmin/
 docker build -t phpmyadmin-image . 
 kubectl apply -f phpmyadmin.yaml
+cd ../..
+
+# Nginx operation
+cd ./srcs/nginx/
+docker build -t nginx-image . > /dev/null
+kubectl create configmap nginxconfigmap --from-file=./default.conf --from-file=./proxy.conf
+kubectl apply -f *.yaml
 cd ../..
 
 
