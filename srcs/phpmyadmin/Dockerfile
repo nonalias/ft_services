@@ -45,13 +45,6 @@ ENV PMA_VERSION 5.0.2
 EXPOSE 5000
 COPY entry.sh /tmp/entry.sh
 COPY default.conf /etc/nginx/conf.d/
-
-RUN mkdir -p /var/www/html
-RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
-RUN tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
-RUN rm -f phpMyAdmin-5.0.2-all-languages.tar.gz
-RUN mv phpMyAdmin-5.0.2-all-languages phpmyadmin
-RUN mv /phpmyadmin /var/www/html/
-COPY config.inc.php /var/www/html/phpmyadmin
+COPY config.inc.php /tmp/
 
 ENTRYPOINT ["sh", "/tmp/entry.sh"]

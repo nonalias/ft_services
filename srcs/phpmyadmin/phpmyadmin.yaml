@@ -41,3 +41,31 @@ spec:
             - image: phpmyadmin-image
               imagePullPolicy: Never
               name: phpmyadmin-container
+              ports:
+              - containerPort: 5000
+              livenessProbe:
+                httpGet:
+                  port: 5000
+                initialDelaySeconds: 5
+                periodSeconds: 5
+              volumeMounts:
+              - name: phpmyadmin-pv
+                mountPath: /var/www/html/phpmyadmin
+            volumes:
+            - name: phpmyadmin-pv
+              persistentVolumeClaim:
+                claimName: phpmyadmin-pv-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: phpmyadmin-pv-claim
+  labels:
+    type: app
+    service: phpmyadmin
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
