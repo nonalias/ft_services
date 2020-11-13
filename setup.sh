@@ -38,7 +38,7 @@ cd ../..
 # Nginx operation
 cd ./srcs/nginx/
 docker build -t nginx-image . > /dev/null
-kubectl create configmap nginxconfigmap --from-file=./default.conf --from-file=./proxy.conf
+kubectl create configmap nginx-conf --from-file=./default.conf --from-file=./proxy.conf
 kubectl apply -f *.yaml
 cd ../..
 
