@@ -35,12 +35,20 @@ docker build -t phpmyadmin-image .
 kubectl apply -f phpmyadmin.yaml
 cd ../..
 
+# wordpress
+cd ./srcs/wordpress
+docker build -t wordpress-image . > /dev/null
+kubectl apply -f wordpress.yaml
+cd ../..
+
 # Nginx operation
 cd ./srcs/nginx/
 docker build -t nginx-image . > /dev/null
 kubectl create configmap nginx-conf --from-file=./default.conf --from-file=./proxy.conf
 kubectl apply -f *.yaml
 cd ../..
+
+
 
 
 ssh-keygen -R 192.168.99.240
