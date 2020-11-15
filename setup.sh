@@ -29,26 +29,28 @@ kubectl apply -f deployment.yaml
 kubectl apply -f pv.yaml
 cd ../..
 
-# phpMyAdmin operation
-cd ./srcs/phpmyadmin/
-docker build -t phpmyadmin-image . 
-kubectl apply -f phpmyadmin.yaml
-cd ../..
-
 # wordpress
 cd ./srcs/wordpress
 docker build -t wordpress-image . > /dev/null
 kubectl apply -f wordpress.yaml
 cd ../..
 
+# phpMyAdmin operation
+cd ./srcs/phpmyadmin/
+docker build -t phpmyadmin-image . 
+kubectl apply -f phpmyadmin.yaml
+cd ../..
+
+
 # Nginx operation
 cd ./srcs/nginx/
 kubectl get svc | grep wordpress-service | awk '{print $4}' > wp-ip
 sed -i.bak "s/wp-service/$(cat wp-ip)/g" ./default.conf
-rm default.conf.bak
 docker build -t nginx-image . > /dev/null
 #kubectl create configmap nginx-conf --from-file=./default.conf --from-file=./proxy.conf
 kubectl apply -f *.yaml
+rm default.conf
+mv default.conf.bak default.conf
 cd ../..
 
 
