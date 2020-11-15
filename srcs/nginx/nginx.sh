@@ -11,6 +11,8 @@ sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd
 ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
 
+sed -i "s/wp-service/wordpress-service/g" /etc/nginx/conf.d/default.conf
+
 /usr/sbin/sshd
 
 nginx -g 'pid /tmp/nginx.pid; daemon off;';

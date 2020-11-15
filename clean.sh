@@ -14,7 +14,7 @@ cd ../..
 cd srcs/mysql/
 kubectl delete -f deployment.yaml
 kubectl delete -f pv.yaml
-kubectl delete configmap/nginx-conf
+#kubectl delete configmap/nginx-conf
 cd ../..
 
 cd srcs/phpmyadmin/

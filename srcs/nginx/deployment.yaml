@@ -36,13 +36,13 @@ spec:
             - containerPort: 22 
               name: ssh
               protocol: TCP
-        volumeMounts:
-        - name: nginx-conf-volume
-          mountPath: /etc/nginx/conf.d/
-      volumes:
-      - name: nginx-conf-volume
-        configMap:
-          name: nginx-conf
+#volumeMounts:
+#- name: nginx-conf-volume
+#mountPath: /etc/nginx/conf.d/
+#volumes:
+#- name: nginx-conf-volume
+#configMap:
+#name: nginx-conf
 
 ---
 
