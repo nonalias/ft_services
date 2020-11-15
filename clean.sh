@@ -20,3 +20,7 @@ cd ../..
 cd srcs/phpmyadmin/
 kubectl delete -f phpmyadmin.yaml
 cd ../..
+
+cd srcs/wordpress/
+kubectl delete -f wordpress.yaml
+cd ../..
