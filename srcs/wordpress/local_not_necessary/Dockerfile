@@ -31,5 +31,6 @@ RUN apk add nginx \
 
 COPY ./entry.sh /tmp/entry.sh
 COPY ./default.conf /etc/nginx/conf.d/
+COPY ./wp-config.php /tmp/
 
 ENTRYPOINT ["sh", "/tmp/entry.sh"]
