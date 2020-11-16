@@ -1,3 +1,4 @@
+use wordpress;
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/

@@ -1,3 +1,12 @@
+eval $(minikube docker-env)
+
+# remove images
+#docker rmi -f ftps-image
+#docker rmi -f mysql-image
+#docker rmi -f wordpress-image
+#docker rmi -f phpmyadmin-image
+#docker rmi -f nginx-image
+#docker rmi -f influxdb-image
 
 cd srcs/nginx/
 kubectl delete -f *.yaml

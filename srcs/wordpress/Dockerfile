@@ -3,6 +3,7 @@ FROM alpine:latest
 RUN apk update
 RUN apk add vim
 RUN apk add nginx \
+	mysql-client \
         php7 \
         php7-bcmath \
         php7-ctype \
@@ -32,5 +33,6 @@ RUN apk add nginx \
 COPY ./entry.sh /tmp/entry.sh
 COPY ./default.conf /etc/nginx/conf.d/
 COPY ./wp-config.php /tmp
+COPY ./wordpress.sql /tmp
 
 ENTRYPOINT ["sh", "/tmp/entry.sh"]

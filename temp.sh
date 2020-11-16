@@ -32,7 +32,7 @@ cd ../..
 
 # phpMyAdmin operation
 cd ./srcs/phpmyadmin/
-docker build -t phpmyadmin-image . 
+docker build -t phpmyadmin-image . > /dev/null
 kubectl apply -f phpmyadmin.yaml
 cd ../..
 
