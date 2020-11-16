@@ -29,7 +29,7 @@ define( 'DB_USER', 'modyhoon' );
 define( 'DB_PASSWORD', '1q2w3e4r' );
 
 /** MySQL hostname */
-define( 'DB_HOST', '172.17.0.3' );
+define( 'DB_HOST', '172.17.0.2' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
