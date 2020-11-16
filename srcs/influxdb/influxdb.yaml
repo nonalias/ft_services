@@ -43,7 +43,7 @@ spec:
               name: influxdb-container
               volumeMounts:
               - name: influxdb-persistent-storage
-                mountPath: ~/.influxdb
+                mountPath: /root/.influxdb
             volumes:
             - name: influxdb-persistent-storage
               persistentVolumeClaim:

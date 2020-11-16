@@ -24,3 +24,8 @@ cd ../..
 cd srcs/wordpress/
 kubectl delete -f wordpress.yaml
 cd ../..
+
+cd srcs/influxdb/
+kubectl delete -f influxdb.yaml
+kubectl delete -f pv.yaml
+cd ../..
