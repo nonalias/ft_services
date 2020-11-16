@@ -1,8 +1,3 @@
-# volume over predict
-export MINIKUBE_HOME=~/goinfre
-# starting minikube
-minikube start --driver=virtualbox
-
 # changing docker image location
 eval $(minikube docker-env)
 
@@ -37,7 +32,7 @@ cd ../..
 
 # phpMyAdmin operation
 cd ./srcs/phpmyadmin/
-docker build -t phpmyadmin-image .  > /dev/null
+docker build -t phpmyadmin-image . 
 kubectl apply -f phpmyadmin.yaml
 cd ../..
 
