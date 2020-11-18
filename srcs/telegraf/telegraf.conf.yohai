@@ -1,0 +1,28 @@
+[agent]
+ interval = "1s"
+ round_interval = true
+ metric_batch_size = 1000
+ metric_buffer_limit = 10000
+ collection_jitter = "0s"
+ flush_interval = "5s"
+ flush_jitter = "0s"
+ debug = false
+ quiet = false
+ hostname = "mytest1"
+ omit_hostname = false
+
+
+ [[outputs.influxdb]]
+ urls = ["http://172.17.0.2:8086"] # required
+ database = "telegraf" # required
+ precision = "s"
+#retention_policy = "default"
+ write_consistency = "any"
+ timeout = "5s"
+
+ [[inputs.docker]]
+   endpoint = "unix:///var/run/docker.sock"
+   gather_services = false
+   container_name_include = []
+   perdevice = true
+   total = true
