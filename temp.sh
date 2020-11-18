@@ -55,7 +55,4 @@ kubectl apply -f influxdb.yaml
 kubectl apply -f pv.yaml
 cd ../..
 
-
-
-
 ssh-keygen -R 192.168.99.240
