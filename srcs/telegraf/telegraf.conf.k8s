@@ -1,0 +1,47 @@
+[agent]
+ interval = "1s"
+ round_interval = true
+ metric_batch_size = 1000
+ metric_buffer_limit = 10000
+ collection_jitter = "0s"
+ flush_interval = "5s"
+ flush_jitter = "0s"
+ debug = false
+ quiet = false
+ hostname = "mytest1"
+ omit_hostname = false
+
+
+ [[outputs.influxdb]]
+ urls = ["http://influxdb-service:8086"] # required
+ database = "telegraf" # required
+ precision = "s"
+#retention_policy = "default"
+ write_consistency = "any"
+ timeout = "5s"
+
+[[inputs.kubernetes]]
+  ## URL for the kubelet
+  url = "http://192.168.99.102:8443"
+
+  ## Use bearer token for authorization. ('bearer_token' takes priority)
+  ## If both of these are empty, we'll use the default serviceaccount:
+  ## at: /run/secrets/kubernetes.io/serviceaccount/token
+  # bearer_token = "/path/to/bearer/token"
+  ## OR
+  # bearer_token_string = "abc_123"
+
+  ## Pod labels to be added as tags.  An empty array for both include and
+  ## exclude will include all labels.
+  # label_include = []
+  # label_exclude = ["*"]
+
+  ## Set response_timeout (default 5 seconds)
+  # response_timeout = "5s"
+
+  ## Optional TLS Config
+  # tls_ca = /path/to/cafile
+  # tls_cert = /path/to/certfile
+  # tls_key = /path/to/keyfile
+  ## Use TLS but skip chain & host verification
+  # insecure_skip_verify = false

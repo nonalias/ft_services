@@ -13,7 +13,7 @@
 
 
  [[outputs.influxdb]]
- urls = ["http://172.17.0.2:8086"] # required
+ urls = ["http://influxdb-service:8086"] # required
  database = "telegraf" # required
  precision = "s"
 #retention_policy = "default"
