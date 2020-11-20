@@ -1,3 +1,3 @@
 cd /usr/share/grafana/conf
 
-grafana-server -config defaults.ini
+grafana-server -config /etc/grafana/grafana.ini
