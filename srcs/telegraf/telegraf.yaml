@@ -22,11 +22,20 @@ spec:
             - image: telegraf-image
               imagePullPolicy: Never
               name: telegraf-container
-              volumeMounts:
-              - name: docker-socket
-                mountPath: /var/run/docker.sock
-            volumes:
-            - name: docker-socket
-              hostPath:
-                path: /var/run/docker.sock
-                type: Socket
+              envFrom:
+              - secretRef:
+                  name: telegraf-secrets
+
+---
+
+apiVersion: v1
+
+kind: Secret
+metadata:
+  name: telegraf-secrets
+type: Opaque
+stringData:
+  INFLUXDB_DB: telegraf
+  INFLUXDB_URL: http://influxdb-service:8086
+  INFLUXDB_USER: admin
+  INFLUXDB_USER_PASSWORD: admin
