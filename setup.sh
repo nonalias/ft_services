@@ -44,13 +44,13 @@ cd ../..
 
 # Nginx operation
 cd ./srcs/nginx/
-kubectl get svc | grep wordpress-service | awk '{print $4}' > wp-ip
-sed -i.bak "s/wp-service/$(cat wp-ip)/g" ./default.conf
+#kubectl get svc | grep wordpress-service | awk '{print $4}' > wp-ip
+#sed -i.bak "s/wp-service/$(cat wp-ip)/g" ./default.conf
 docker build -t nginx-image . > /dev/null
 #kubectl create configmap nginx-conf --from-file=./default.conf --from-file=./proxy.conf
 kubectl apply -f *.yaml
-rm default.conf
-mv default.conf.bak default.conf
+#rm default.conf
+#mv default.conf.bak default.conf
 cd ../..
 
 # influxdb operation
@@ -60,7 +60,17 @@ kubectl apply -f influxdb.yaml
 kubectl apply -f pv.yaml
 cd ../..
 
+# telegraf operation
+cd ./srcs/telegraf/
+docker build -t telegraf-image .
+kubectl apply -f telegraf.yaml
+cd ../..
 
+# grafana operation
+cd ./srcs/grafana/
+docker build -t grafana-image .
+kubectl apply -f grafana.yaml
+cd ../..
 
 
 ssh-keygen -R 192.168.99.240
