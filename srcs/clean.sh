@@ -8,33 +8,33 @@ eval $(minikube docker-env)
 #docker rmi -f nginx-image
 #docker rmi -f influxdb-image
 
-cd srcs/nginx/
+cd nginx/
 kubectl delete -f *.yaml
-cd ../../
+cd ../
 
-cd srcs/metallb/
+cd metallb/
 kubectl delete -f *.yaml
-cd ../..
+cd ..
 
-cd srcs/ftp/
+cd ftp/
 kubectl delete -f *.yaml
-cd ../..
+cd ..
 
-cd srcs/mysql/
+cd mysql/
 kubectl delete -f deployment.yaml
 kubectl delete -f pv.yaml
 #kubectl delete configmap/nginx-conf
-cd ../..
+cd ..
 
-cd srcs/phpmyadmin/
+cd phpmyadmin/
 kubectl delete -f phpmyadmin.yaml
-cd ../..
+cd ..
 
-cd srcs/wordpress/
+cd wordpress/
 kubectl delete -f wordpress.yaml
-cd ../..
+cd ..
 
-cd srcs/influxdb/
+cd influxdb/
 kubectl delete -f influxdb.yaml
 kubectl delete -f pv.yaml
-cd ../..
+cd ..
