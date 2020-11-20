@@ -3,29 +3,25 @@ kind: Deployment
 metadata:
   name: grafana-deployment
   labels:
-    type: app
-    service: grafana
+    app: grafana
 spec:
   selector:
     matchLabels:
-      type: app
-      service: grafana
+      app: grafana
   minReadySeconds: 5
   template:
     metadata:
       labels:
-        type: app
-        service: grafana
+        app: grafana
     spec:
       containers:
-      - env:
-        - name: GF_INSTALL_PLUGINS
-          value: grafana-piechart-panel, blackmirror1-singlestat-math-panel
-        - name: GF_SECURITY_ADMIN_PASSWORD
-          value: admin
+      - name: grafana-container
         image: grafana-image
         imagePullPolicy: Never
-        name: grafana
+        ports:
+        - containerPort: 3000
+          name: grafana
+          protocol: TCP
         volumeMounts:
         - mountPath: /etc/grafana/provisioning
           name: grafana-volume
@@ -37,24 +33,28 @@ spec:
           name: grafana-volume
           subPath: grafana.ini
           readOnly: true
-      restartPolicy: Always
+        env:
+        - name: GF_INSTALL_PLUGINS
+          value: grafana-piechart-panel, blackmirror1-singlestat-math-panel
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          value: admin
       volumes:
       - name: grafana-volume
         hostPath:
-          path: /grafana
+          path: ./grafana
+
 ---
+
 
 apiVersion: v1
 kind: Service
 metadata:
   name: grafana-service
   labels:
-    type: app
-    service: grafana
+    app: grafana
 spec:
   selector:
-    type: app
-    service: grafana
+    app: grafana
   ports:
     - protocol: TCP
       port: 3000
