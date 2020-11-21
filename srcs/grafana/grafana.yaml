@@ -3,16 +3,19 @@ kind: Deployment
 metadata:
   name: grafana-deployment
   labels:
-    app: grafana
+    type: app
+    service: grafana
 spec:
   selector:
     matchLabels:
-      app: grafana
+      type: app
+      service: grafana
   minReadySeconds: 5
   template:
     metadata:
       labels:
-        app: grafana
+        type: app
+        service: grafana
     spec:
       containers:
       - name: grafana-container
@@ -36,10 +39,12 @@ kind: Service
 metadata:
   name: grafana-service
   labels:
-    app: grafana
+    type: app
+    service: grafana
 spec:
   selector:
-    app: grafana
+    type: app
+    service: grafana
   ports:
     - protocol: TCP
       port: 3000

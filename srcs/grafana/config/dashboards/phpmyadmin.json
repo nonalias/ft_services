@@ -98,7 +98,12 @@
           ],
           "tags": [
             {
-              "key": "app",
+              "key": "type",
+              "operator": "=",
+              "value": "app"
+            },
+            {
+              "key": "service",
               "operator": "=",
               "value": "phpmyadmin"
             }
