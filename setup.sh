@@ -73,4 +73,4 @@ kubectl apply -f grafana.yaml
 cd ../..
 
 
-ssh-keygen -R 192.168.99.240
+ssh-keygen -R 192.168.99.243
