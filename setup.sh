@@ -44,13 +44,13 @@ cd ../..
 
 # Nginx operation
 cd ./srcs/nginx/
-#kubectl get svc | grep wordpress-service | awk '{print $4}' > wp-ip
-#sed -i.bak "s/wp-service/$(cat wp-ip)/g" ./default.conf
+kubectl get svc | grep wordpress-service | awk '{print $4}' > wp-ip
+sed -i.bak "s/wp-service/$(cat wp-ip)/g" ./default.conf
 docker build -t nginx-image . > /dev/null
-#kubectl create configmap nginx-conf --from-file=./default.conf --from-file=./proxy.conf
+kubectl create configmap nginx-conf --from-file=./default.conf --from-file=./proxy.conf
 kubectl apply -f *.yaml
-#rm default.conf
-#mv default.conf.bak default.conf
+rm default.conf
+mv default.conf.bak default.conf
 cd ../..
 
 # influxdb operation

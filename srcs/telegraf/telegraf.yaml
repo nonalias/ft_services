@@ -25,6 +25,14 @@ spec:
               envFrom:
               - secretRef:
                   name: telegraf-secrets
+              volumeMounts:
+              - name: docker-unix-socket
+                mountPath: /var/run/docker.sock
+            volumes:
+            - name: docker-unix-socket
+              hostPath:
+                path: /var/run/docker.sock
+                type: Socket
 
 ---
 
