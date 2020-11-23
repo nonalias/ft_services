@@ -41,6 +41,12 @@ spec:
             - image: mysql-image
               imagePullPolicy: Never
               name: mysql-container
+              livenessProbe:
+                initialDelaySeconds: 20
+                periodSeconds: 10
+                timeoutSeconds: 5
+                tcpSocket:
+                  port: 3306
               env:
               - name: MYSQL_ROOT_PASSWORD
                 value: password

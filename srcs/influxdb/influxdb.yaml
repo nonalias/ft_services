@@ -44,6 +44,12 @@ spec:
               volumeMounts:
               - name: influxdb-persistent-storage
                 mountPath: /root/.influxdb
+              livenessProbe:
+                initialDelaySeconds: 20
+                periodSeconds: 20
+                timeoutSeconds: 5
+                tcpSocket:
+                  port: 8086
             volumes:
             - name: influxdb-persistent-storage
               persistentVolumeClaim:
