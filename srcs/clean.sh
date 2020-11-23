@@ -38,3 +38,11 @@ cd influxdb/
 kubectl delete -f influxdb.yaml
 kubectl delete -f pv.yaml
 cd ..
+
+cd telegraf/
+kubectl delete -f telegraf.yaml
+cd ..
+
+cd grafana/
+kubectl delete -f grafana.yaml
+cd ..
