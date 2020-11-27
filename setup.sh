@@ -19,7 +19,7 @@ cd ../..
 # ftps operation
 cd ./srcs/ftp/
 docker build -t ftps-image . > /dev/null
-kubectl apply -f *.yaml
+kubectl apply -f ftp.yaml
 cd ../..
 
 # MySQL operation
@@ -37,7 +37,7 @@ cd ../..
 
 # phpMyAdmin operation
 cd ./srcs/phpmyadmin/
-docker build -t phpmyadmin-image .  > /dev/null
+docker build -t phpmyadmin-image .
 kubectl apply -f phpmyadmin.yaml
 cd ../..
 

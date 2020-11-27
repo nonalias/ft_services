@@ -278,6 +278,7 @@ spec:
       annotations:
         prometheus.io/port: '7472'
         prometheus.io/scrape: 'true'
+        metallb.universe.tf/allow-shared-ip: shared
       labels:
         app: metallb
         component: speaker
